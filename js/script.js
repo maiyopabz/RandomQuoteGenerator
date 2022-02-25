@@ -9,33 +9,39 @@ project 1 - A Random Quote Generator
   // Check the "Project Resources" section of the project instructions
   // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
 
+  let emptyVariable =""; //variable that store empty string.
+  let html = document.getElementById('quote-box');
 
 /*** 
  * `quotes` array 
 ***/
 const quotes = [
   {
-    quote: "All of my friends who have younger siblings who are going to college or high school - my number one piece of advice is: You should learn how to program.",
+    quote: "You should learn how to program.",
     source: "Mark Zuckerberg",
     citation: "Facebook",
     year: "2006",
+    category: "Inspiration"
   },
   {
     quote: "Programming isn't about what you know; it's about what you can figure out.",
     source: "Chris Pine",
-    category: "Learn to program",
+    citation: "Learn to program",
     year: "2002",
+    category: "Inspiration"
   },
   {
-    quote: "Coding is the language of the future, and every girl should learn it. As I've learned from watching girls grow and learn in our classrooms, coding is fun, collaborative and creative.",
+    quote: "Coding is the language of the future, and every girl should learn it.",
     source: "Reshma Saujani",
     citation: "founder of Girls Who Code",
     year: "2017",
+    category: "Inspiration"
   },
   {
     quote: "Everybody should learn to program a computer, because it teaches you how to think.",
     source: "Steve Jobs",
     citation: "Apple",
+    category: "Inspiration"
     
   },
   {
@@ -43,6 +49,7 @@ const quotes = [
     source: "Elon Musk",
     citation: "SpaceX",
     year: "2002",
+    category: "Inspiration"
   }
 
 
@@ -53,16 +60,20 @@ const quotes = [
 /***
  * `getRandomQuote` function
 ***/
-function getRandomQuote(arr1) {
+function getRandomQuote() {
 
-  let randomNumber = Math.floor(Math.random() * arr1.length );
-  let randomQuote = arr1[randomNumber];
-  return getRandomQuote;
+  let randomNumber = Math.floor(Math.random() * quotes.length );
+  return quotes[randomNumber];
  
 }
 
 
+//random color function when generate new quotes. 
 
+function getRandomColr() {
+  let randomClr = "#" + Math.floor(Math.random() * (256* (256 * 256)).toString(16).padStart(6)); 
+  return randomClr;
+}
 
 /***
  * `printQuote` function
@@ -70,9 +81,35 @@ function getRandomQuote(arr1) {
 
 function printQuote() {
 
-  let new_RandomQuote = randomQuote(quotes);
-  let 
+  let firstRandomQuote = getRandomQuote();
+  let updateHtml = `
+  <p class="qoute"> ${firstRandomQuote.quote}</p>
+  <p class="source"> ${firstRandomQuote.source}
+  `;
+
+  if(quotes.citation !== emptyVariable) {
+    updateHtml += `<span class = "citation"> ${firstRandomQuote.citation}</span>`;
+  }
+
+  if (quotes.year !== emptyVariable) {
+    updateHtml += `<span class = "year">${firstRandomQuote.year}</span>`;
+   } 
+
+   if (quotes.category !== emptyVariable) {
+    updateHtml += `<span>, ${firstRandomQuote.category}</span>`;
+   } 
+
+   updateHtml += `</p>`;
+
+   html.innerHTML = updateHtml; 
+
+   document.body.style.background = getRandomColr();
 }
+
+printQuote(); 
+
+
+  
 
 
 /***
