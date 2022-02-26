@@ -6,9 +6,9 @@ Here is the live link = > https://randomquotegenerator-js-team3house.netlify.app
 
 Simple overview of use/purpose.
 
-## Description *
+## Description 
 
-I declared an Arrays that is called `qoutes` that holds 5 objects with each properties and values.
+I declared an arrays that is called `quotes` that holds 5 objects with each properties and values.
 Then I created a `getRandomQuote` function that generates a number from index value of 0 to length of the qoutes array that has been declared. This will also returns a randomize object within the qoutes array object.
 
 I declared a `printQuote` function that calls the getRandomQuote() function then generates its value to print the html into the html page.
